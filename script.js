@@ -80,12 +80,15 @@ function showQues(i) {
     
     const optionList = document.querySelector('.option_list');
     
-    let optionTag = '<div class="option">'+ questions[i].options [0] +'</div>'
-                + '<div class="option">'+ questions[i].options [1] +'</div>'
-                + '<div class="option">'+ questions[i].options [2] +'</div>'
-                + '<div class="option">'+ questions[i].options [3] +'</div>';
-    
-    optionList.innerHTML = optionTag;
+    let options = questions[i].options;
+
+    for(let j = 0; j < options.length; j++) {
+        let node = document.createElement("div");
+        let textnode = document.createTextNode(`${options[j]}`);
+        node.classList.add("option");
+        node.appendChild(textnode);
+        optionList.appendChild(node);
+    }
 
     const option = optionList.querySelectorAll(".option");
     for (let i = 0; i < option.length; i++) {
